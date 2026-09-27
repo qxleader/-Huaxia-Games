@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0b09">
+<title>九州分区 · 华夏游戏</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%23a4281a'/><text x='32' y='46' font-size='40' text-anchor='middle' fill='%23f2ede2' font-family='serif' font-weight='900'>华</text></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{--ink:#0d0b09;--ink-2:#14110d;--paper:#f2ede2;--paper-2:#e7dfcc;--zhu:#a4281a;--zhu-hi:#c6452c;--zhu-deep:#6e1710;--silver:#cfc7b6;--gold:#9c7a3c;--line:rgba(196,69,44,.28);--pad:clamp(1.1rem,4vw,3.2rem)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--silver);font-family:"Noto Sans SC",system-ui,-apple-system,"Microsoft YaHei",sans-serif;line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .78 0 0 0 0 .7 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.35}
+.container{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 var(--pad)}a{color:inherit;text-decoration:none}section{position:relative;z-index:1}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,11,9,.84);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem}.brand-seal{width:42px;height:42px;border-radius:8px;flex:none;background:linear-gradient(150deg,var(--zhu),var(--zhu-deep));display:grid;place-items:center;color:var(--paper);box-shadow:0 0 0 1px rgba(196,69,44,.4)}.brand-seal span{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.1rem}
+.brand-name{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.3rem;color:var(--paper);letter-spacing:.12em}.brand-name small{display:block;font-family:"Noto Sans SC";font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem}
+.menu{display:flex;align-items:center;gap:1.2rem;list-style:none;font-size:.9rem}.menu a{color:var(--silver);position:relative;padding:.2rem 0;transition:color .2s}.menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--zhu-hi);transition:width .25s}.menu a:hover{color:var(--paper)}.menu a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:1px solid var(--zhu-hi);background:transparent;color:var(--paper);font-size:.9rem;padding:.5rem 1rem;border-radius:6px;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s;white-space:nowrap}.btn:hover{background:var(--zhu-hi);color:#fff;box-shadow:0 0 22px rgba(196,69,44,.4)}.btn-zhu{background:var(--zhu);border-color:var(--zhu-hi);color:#fff}.btn-ghost{border-color:var(--line);color:var(--silver)}.btn-ghost:hover{background:rgba(196,69,44,.08)}.btn-seal{background:var(--paper);color:var(--zhu-deep);border-color:var(--paper);font-family:"Noto Serif SC",serif;font-weight:700}
+.hamburger{display:none;background:none;border:none;color:var(--paper);font-size:1.5rem;cursor:pointer;padding:.2rem .4rem}
+.pagehead{padding:3rem 0 2rem;border-bottom:1px solid var(--line);background:radial-gradient(900px 320px at 80% 0%,rgba(164,40,26,.18),transparent 60%)}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.76rem;letter-spacing:.3em;color:var(--zhu-hi)}.eyebrow::before{content:"";width:2rem;height:1px;background:var(--zhu-hi)}
+.pagehead h1{font-family:"Noto Serif SC",serif;font-weight:900;color:var(--paper);font-size:clamp(1.9rem,5vw,3rem);margin:.4rem 0 .3rem;letter-spacing:.08em}
+.pagehead p{font-size:.95rem;color:var(--silver);opacity:.85;max-width:700px;line-height:1.9}
+.pagehead .count{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}.pagehead .count span{font-size:.74rem;border:1px solid var(--line);color:var(--silver);border-radius:20px;padding:.12rem .7rem}.pagehead .count b{color:var(--zhu-hi)}
+.sec{padding:3rem 0}
+h2.h{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:.06em;margin:.3rem 0 .6rem}
+.lead{font-size:.95rem;color:var(--silver);opacity:.88;max-width:720px;line-height:1.95}
+/* 九州 grid */
+.zg{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.z{border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.2rem;background:linear-gradient(165deg,rgba(20,17,13,.88),rgba(13,11,9,.96));transition:.2s;display:block}
+.z:hover{border-color:var(--zhu-hi);transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(164,40,26,.5)}
+.z .top{display:flex;align-items:center;gap:.6rem}
+.z .zi{width:44px;height:44px;flex:none;border-radius:9px;background:rgba(164,40,26,.16);color:var(--zhu-hi);display:grid;place-items:center;font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.3rem}
+.z h3{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.1rem;letter-spacing:.05em}
+.z .prov{margin-top:.5rem;font-size:.78rem;color:var(--gold);letter-spacing:.04em}
+.z p{font-size:.8rem;color:var(--silver);opacity:.8;margin-top:.35rem;line-height:1.7}
+.z .go{margin-top:.7rem;font-size:.78rem;color:var(--zhu-hi)}
+/* 特注 */
+.special{border:1px dashed rgba(156,122,60,.5);border-radius:14px;margin-top:2.6rem;padding:1.4rem 1.5rem;background:rgba(156,122,60,.05)}
+.special h3{font-family:"Noto Serif SC",serif;color:var(--gold);font-size:1.05rem;letter-spacing:.08em;margin-bottom:.5rem}
+.special p{font-size:.86rem;color:var(--silver);opacity:.9;line-height:1.9;max-width:820px}
+.special p b{color:var(--paper)}
+/* 域外 */
+.extra{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.ex{border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.2rem;background:rgba(20,17,13,.6)}
+.ex .ic{width:42px;height:42px;border-radius:9px;background:rgba(164,40,26,.15);color:var(--zhu-hi);display:grid;place-items:center;font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.2rem;margin-bottom:.7rem}
+.ex h4{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1rem}
+.ex p{font-size:.8rem;color:var(--silver);opacity:.82;margin-top:.35rem;line-height:1.7}
+/* CTA */
+.cta-box{border:1px solid var(--line);border-radius:14px;margin-top:2rem;padding:2rem;text-align:center;background:linear-gradient(150deg,rgba(164,40,26,.16),rgba(13,11,9,.9))}
+.cta-box h3{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.3rem;letter-spacing:.06em}.cta-box p{font-size:.86rem;color:var(--silver);opacity:.82;margin:.5rem auto 1.4rem;max-width:560px}.cta-box .row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+footer{background:var(--ink-2);border-top:1px solid var(--line);padding:2.6rem 0 1.6rem;position:relative;z-index:1}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem}.foot h5{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:.92rem;letter-spacing:.08em;margin-bottom:.8rem}.foot ul{list-style:none;display:grid;gap:.45rem}.foot ul a{font-size:.8rem;color:var(--silver);opacity:.82;transition:.2s}.foot ul a:hover{color:var(--zhu-hi)}.foot .ftext{font-size:.8rem;color:var(--silver);opacity:.78;line-height:1.8;margin-top:.6rem;max-width:340px}.foot .ftext b{color:var(--gold)}
+.foot-bottom{margin-top:2rem;border-top:1px solid var(--line);padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;color:var(--silver);opacity:.65}
+#toast{position:fixed;left:50%;bottom:2rem;transform:translateX(-50%);background:var(--paper);color:var(--zhu-deep);font-family:"Noto Serif SC",serif;font-size:.88rem;padding:.6rem 1.1rem;border-radius:8px;opacity:0;pointer-events:none;transition:.3s;z-index:100}#toast.show{opacity:1}
+@media(max-width:960px){.zg{grid-template-columns:1fr 1fr}.extra{grid-template-columns:1fr}.menu{display:none;position:absolute;top:66px;left:0;right:0;background:var(--ink-2);flex-direction:column;align-items:flex-start;padding:1rem var(--pad);border-bottom:1px solid var(--line);gap:1rem}.menu.open{display:flex}.hamburger{display:block}.nav-actions .btn-hide-m{display:none}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.zg{grid-template-columns:1fr}.extra{grid-template-columns:1fr}.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="华夏游戏官网.html"><span class="brand-seal"><span>华</span></span><span class="brand-name">华夏游戏<small>用心做游戏</small></span></a>
+    <nav><ul class="menu" id="menu"><li><a href="华夏游戏官网.html">首页</a></li><li><a href="作品库.html">作品库</a></li><li><a href="工作室.html">工作室</a></li><li><a href="草台剧场.html">草台剧场</a></li><li><a href="赛事中心.html">赛事</a></li><li><a href="资助中心.html">资助</a></li><li><a href="关于我们.html">关于</a></li></ul></nav>
+    <div class="nav-actions"><a class="btn btn-ghost btn-hide-m" href="平台下载.html">平台下载</a><a class="btn btn-zhu" href="登录注册.html">登录 / 注册</a><button class="hamburger" id="burger" aria-label="菜单">☰</button></div>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="container">
+    <span class="eyebrow">九州分区体系</span>
+    <h1>九州创作分区</h1>
+    <p>取古九州之形，把华夏大地划分为九个创作分区；再设瀛洲、大荒、新域等域外分区，面向亚洲与更远的创作者。每个分区独立举办活动与月度挑战，也支持跨州联动。</p>
+    <div class="count"><span><b>9</b> 大古州</span><span><b>3</b> 域外分区</span><span>港澳台 · 特注分区</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <span class="eyebrow">九大古州</span>
+    <h2 class="h">九州 · 一州一风土</h2>
+    <p class="lead">每一州都细分为具体省份，点任一州可跳转到作品库查看该分区作品。</p>
+    <div class="zg">
+      <a class="z" href="作品库.html#冀州"><div class="top"><span class="zi">冀</span><h3>冀州</h3></div><div class="prov">京津冀</div><p>古燕赵之地，津门故里，码头文化交融。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#兖州"><div class="top"><span class="zi">兖</span><h3>兖州</h3></div><div class="prov">山东</div><p>齐鲁大地，孔孟之乡，山河与豪情并立。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#青州"><div class="top"><span class="zi">青</span><h3>青州</h3></div><div class="prov">辽宁 · 吉林 · 黑龙江</div><p>关外沃野，白山黑水，北国气象。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#徐州"><div class="top"><span class="zi">徐</span><h3>徐州</h3></div><div class="prov">江苏北部 · 安徽北部</div><p>淮海要冲，南北交汇之地。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#扬州"><div class="top"><span class="zi">扬</span><h3>扬州</h3></div><div class="prov">上海 · 江苏南部 · 浙江 · 福建 · 台湾地区</div><p>江南烟雨，海派新潮，闽台一脉。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#荆州"><div class="top"><span class="zi">荆</span><h3>荆州</h3></div><div class="prov">湖北 · 湖南 · 河南南部</div><p>荆楚故地，江汉汇流，巫风文韵。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#豫州"><div class="top"><span class="zi">豫</span><h3>豫州</h3></div><div class="prov">河南</div><p>中原地脉，九州通衢，华夏正朔。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#梁州"><div class="top"><span class="zi">梁</span><h3>梁州</h3></div><div class="prov">四川 · 重庆 · 云南 · 贵州</div><p>巴蜀云贵，崇山峻岭，多民族交融。</p><span class="go">查看作品 →</span></a>
+      <a class="z" href="作品库.html#雍州"><div class="top"><span class="zi">雍</span><h3>雍州</h3></div><div class="prov">陕西 · 甘肃 · 宁夏</div><p>关中天府，塞上江南，丝路起点。</p><span class="go">查看作品 →</span></a>
+    </div>
+
+    <div class="special">
+      <h3>港澳台 · 特别区域</h3>
+      <p>香港特别行政区、澳门特别行政区，与<b>台湾地区</b>，是华夏创作生态不可或缺的一部分。平台特设单独对待：香港、澳门并入<b>扬州 · 江南闽台</b>分区予以细致管理；台湾地区同属扬州分区，单列台湾板块，以利于两岸创作者平等交流、共同创作。所有分区均恪守国家法律法规，坚持一个中国原则，尊重地方文化差异。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="container">
+    <span class="eyebrow">域外分区</span>
+    <h2 class="h">面向亚洲，走向更远</h2>
+    <div class="extra">
+      <div class="ex"><div class="ic">瀛</div><h4>瀛洲</h4><p>面向亚洲创作者的分区，连接周边国家与地区的创作力量。</p></div>
+      <div class="ex"><div class="ic">荒</div><h4>大荒</h4><p>实验性项目的试验田，容得下天马行空的尝试。</p></div>
+      <div class="ex"><div class="ic">新</div><h4>新域</h4><p>预留分区，为未来新增的创作区域与类型留出位置。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="container">
+    <div class="cta-box">
+      <h3>你的创作，属于哪一方</h3>
+      <p>一个创作者默认归属 1–2 个分区；能力突出、审核通过后可扩展至更多分区。让每一份创作都有来处，也让每一片土地都被看见。</p>
+      <div class="row"><a class="btn btn-zhu" href="作品库.html">进入作品库</a><a class="btn btn-ghost" href="赛事中心.html">参与分区赛事</a><a class="btn btn-seal" href="登录注册.html">选择我的分区</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><div class="brand-name" style="font-size:1.15rem">华夏游戏<small style="display:block;font-family:'Noto Sans SC';font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem">用心做游戏</small></div><p class="ftext">华夏游戏为<b>民间创作者共建项目</b>，非注册商业企业。依靠爱好者自愿资助持续迭代，为国产创作者撑起一片天。</p></div>
+      <div><h5>平台生态</h5><ul><li><a href="华夏游戏官网.html">首页</a></li><li><a href="作品库.html">作品库</a></li><li><a href="工作室.html">工作室</a></li><li><a href="草台剧场.html">草台剧场</a></li><li><a href="承天学院.html">承天学院</a></li></ul></div>
+      <div><h5>功能入口</h5><ul><li><a href="开发者中心.html">开发者中心</a></li><li><a href="九州分区.html">九州分区</a></li><li><a href="赛事中心.html">创作赛事</a></li><li><a href="资助中心.html">资助中心</a></li><li><a href="平台下载.html">平台启动器下载</a></li><li><a href="登录注册.html">登录 / 注册</a></li></ul></div>
+      <div><h5>关于</h5><ul><li><a href="关于我们.html">关于我们</a></li><li><a href="新闻日志.html">平台动态</a></li><li><a href="javascript:void(0)" data-toast>投稿与版权指引</a></li><li><a href="javascript:void(0)" data-toast>赛事合规声明</a></li><li><a href="javascript:void(0)" data-toast>资助协议</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>华夏游戏 · 用心做游戏 · 民间创作者共建</span><span>一期静态原型</span></div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+<script>
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+var toast=document.getElementById('toast'),timer;
+document.querySelectorAll('[data-toast]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();toast.textContent='该功能建设中，敬请期待';toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1800);});});
+</script>
+</body>
+</html>

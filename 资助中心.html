@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0b09">
+<title>资助中心 · 华夏游戏</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%23a4281a'/><text x='32' y='46' font-size='40' text-anchor='middle' fill='%23f2ede2' font-family='serif' font-weight='900'>华</text></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{--ink:#0d0b09;--ink-2:#14110d;--paper:#f2ede2;--paper-2:#e7dfcc;--zhu:#a4281a;--zhu-hi:#c6452c;--zhu-deep:#6e1710;--silver:#cfc7b6;--gold:#9c7a3c;--line:rgba(196,69,44,.28);--pad:clamp(1.1rem,4vw,3.2rem)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--silver);font-family:"Noto Sans SC",system-ui,-apple-system,"Microsoft YaHei",sans-serif;line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .78 0 0 0 0 .7 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.35}
+.container{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+a{color:inherit;text-decoration:none}
+section{position:relative;z-index:1}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,11,9,.84);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand-seal{width:42px;height:42px;border-radius:8px;flex:none;background:linear-gradient(150deg,var(--zhu),var(--zhu-deep));display:grid;place-items:center;color:var(--paper);box-shadow:0 0 0 1px rgba(196,69,44,.4)}
+.brand-seal span{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.1rem}
+.brand-name{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.3rem;color:var(--paper);letter-spacing:.12em}
+.brand-name small{display:block;font-family:"Noto Sans SC";font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem}
+.menu{display:flex;align-items:center;gap:1.2rem;list-style:none;font-size:.9rem}
+.menu a{color:var(--silver);position:relative;padding:.2rem 0;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--zhu-hi);transition:width .25s}
+.menu a:hover,.menu a.on{color:var(--paper)}
+.menu a:hover::after,.menu a.on::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:1px solid var(--zhu-hi);background:transparent;color:var(--paper);font-size:.9rem;padding:.5rem 1rem;border-radius:6px;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s;white-space:nowrap}
+.btn:hover{background:var(--zhu-hi);color:#fff;box-shadow:0 0 22px rgba(196,69,44,.4)}
+.btn-zhu{background:var(--zhu);border-color:var(--zhu-hi);color:#fff}
+.btn-zhu:hover{background:var(--zhu-hi)}
+.btn-ghost{border-color:var(--line);color:var(--silver)}
+.btn-ghost:hover{border-color:var(--zhu-hi);color:var(--paper);background:rgba(196,69,44,.08)}
+.btn-seal{background:var(--paper);color:var(--zhu-deep);border-color:var(--paper);font-family:"Noto Serif SC",serif;font-weight:700}
+.btn-seal:hover{background:var(--paper-2)}
+.hamburger{display:none;background:none;border:none;color:var(--paper);font-size:1.5rem;cursor:pointer;padding:.2rem .4rem}
+/* head */
+.pagehead{padding:3rem 0 2rem;border-bottom:1px solid var(--line);background:radial-gradient(900px 320px at 80% 0%,rgba(164,40,26,.18),transparent 60%)}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.76rem;letter-spacing:.3em;color:var(--zhu-hi)}
+.eyebrow::before{content:"";width:2rem;height:1px;background:var(--zhu-hi)}
+.pagehead h1{font-family:"Noto Serif SC",serif;font-weight:900;color:var(--paper);font-size:clamp(1.9rem,5vw,3rem);margin:.4rem 0 .3rem;letter-spacing:.08em}
+.pagehead p{font-size:.95rem;color:var(--silver);opacity:.85;max-width:680px;line-height:1.9}
+.pagehead .flagline{margin-top:1.4rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.pagehead .flagline span{font-size:.72rem;border:1px solid var(--line);color:var(--silver);border-radius:20px;padding:.12rem .6rem}
+/* 原则 */
+.principle{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.2rem 0}
+.pr{border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.2rem;background:linear-gradient(160deg,rgba(20,17,13,.8),rgba(13,11,9,.95))}
+.pr .no{font-family:"Noto Serif SC",serif;font-weight:900;color:var(--zhu-hi);font-size:1.4rem}
+.pr h4{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.05rem;margin:.4rem 0 .3rem}
+.pr p{font-size:.82rem;color:var(--silver);opacity:.82;line-height:1.7}
+/* 档位 */
+.tier-sec{margin-top:2.5rem}
+.tier-sec .eyebrow{margin-bottom:.8rem}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
+.tier{position:relative;border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.4rem;background:linear-gradient(165deg,rgba(20,17,13,.85),rgba(13,11,9,.95));overflow:hidden;transition:.25s}
+.tier:hover{transform:translateY(-5px);border-color:var(--zhu-hi);box-shadow:0 20px 44px -20px rgba(164,40,26,.5)}
+.tier .mark{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.6rem;line-height:1;display:inline-flex;align-items:center;gap:.5rem}
+.tier .mark i{font-style:normal;width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-size:1rem;color:#fff}
+.tier h3{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.25rem;margin:.6rem 0 .3rem;letter-spacing:.08em}
+.tier .tag{font-size:.72rem;color:var(--gold);letter-spacing:.1em}
+.tier ul{list-style:none;margin-top:1rem;display:grid;gap:.5rem}
+.tier ul li{font-size:.82rem;color:var(--silver);opacity:.88;display:flex;gap:.5rem;align-items:baseline}
+.tier ul li::before{content:"·";color:var(--zhu-hi)}
+.tier .btn{margin-top:1.2rem;width:100%}
+.t1 i{background:var(--zhu)}.t2 i{background:#3d3530}.t3 i{background:var(--gold)}
+.t-hot{border-color:var(--zhu-hi)}
+.t-hot::after{content:"推荐";position:absolute;top:0;right:0;background:var(--zhu);color:#fff;font-size:.66rem;padding:.15rem .7rem;border-bottom-left-radius:10px;letter-spacing:.1em}
+/* 公示 */
+.pub{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.4rem}
+.pub-card{border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.2rem;background:rgba(20,17,13,.6)}
+.pub-card h4{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.05rem}
+.pub-card p{font-size:.84rem;color:var(--silver);opacity:.84;margin-top:.4rem;line-height:1.75}
+/* 规则 */
+.rules{display:grid;gap:.7rem;margin-top:1.4rem}
+.rule{border:1px solid var(--line);border-radius:10px;padding:.95rem 1.1rem;background:rgba(20,17,13,.5);font-size:.86rem;color:var(--silver);opacity:.9;display:flex;gap:.7rem;align-items:flex-start;line-height:1.7}
+.rule b{color:var(--zhu-hi);font-family:"Noto Serif SC",serif;flex:none}
+/* CTA */
+.cta-box{border:1px solid var(--line);border-radius:14px;margin-top:2.5rem;padding:2rem;text-align:center;background:linear-gradient(150deg,rgba(164,40,26,.16),rgba(13,11,9,.9))}
+.cta-box h3{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.3rem;letter-spacing:.06em}
+.cta-box p{font-size:.86rem;color:var(--silver);opacity:.82;margin:.5rem auto 1.4rem;max-width:520px}
+.cta-box .cta-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+/* 页脚 */
+footer{background:var(--ink-2);border-top:1px solid var(--line);padding:2.6rem 0 1.6rem;position:relative;z-index:1}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem}
+.foot h5{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:.92rem;letter-spacing:.08em;margin-bottom:.8rem}
+.foot ul{list-style:none;display:grid;gap:.45rem}
+.foot ul a{font-size:.8rem;color:var(--silver);opacity:.82;transition:.2s}
+.foot ul a:hover{color:var(--zhu-hi);opacity:1}
+.foot .ftext{font-size:.8rem;color:var(--silver);opacity:.78;line-height:1.8;margin-top:.6rem;max-width:340px}
+.foot .ftext b{color:var(--gold)}
+.foot-bottom{margin-top:2rem;border-top:1px solid var(--line);padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;color:var(--silver);opacity:.65}
+#toast{position:fixed;left:50%;bottom:2rem;transform:translateX(-50%) translateY(20px);background:var(--paper);color:var(--zhu-deep);font-family:"Noto Serif SC",serif;font-size:.88rem;letter-spacing:.06em;padding:.6rem 1.1rem;border-radius:8px;opacity:0;pointer-events:none;transition:.3s;z-index:100}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:960px){.principle{grid-template-columns:1fr}.tier-grid{grid-template-columns:1fr}.pub{grid-template-columns:1fr}.menu{display:none;position:absolute;top:66px;left:0;right:0;background:var(--ink-2);flex-direction:column;align-items:flex-start;padding:1rem var(--pad);border-bottom:1px solid var(--line);gap:1rem}.menu.open{display:flex}.hamburger{display:block}.nav-actions .btn-hide-m{display:none}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="华夏游戏官网.html"><span class="brand-seal"><span>华</span></span><span class="brand-name">华夏游戏<small>用心做游戏</small></span></a>
+    <nav><ul class="menu" id="menu">
+      <li><a href="华夏游戏官网.html">首页</a></li>
+      <li><a href="作品库.html">作品库</a></li>
+      <li><a href="华夏游戏官网.html#studios">工作室</a></li>
+      <li><a href="华夏游戏官网.html#caotai">草台剧场</a></li>
+      <li><a href="华夏游戏官网.html#events">赛事</a></li>
+      <li><a href="资助中心.html" class="on">资助</a></li>
+      <li><a href="平台下载.html">下载</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-hide-m" href="平台下载.html">平台下载</a>
+      <a class="btn btn-zhu" href="登录注册.html">登录 / 注册</a>
+      <button class="hamburger" id="burger" aria-label="菜单">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="container">
+    <span class="eyebrow">为爱发电 · 自愿资助</span>
+    <h1>创作者资助中心</h1>
+    <p>华夏游戏不靠商业资本，平台的服务器、素材、赛事物料，以及各工作室的运转，都靠爱好者的自愿支持一路走下去。资助不是购买游戏，而是支持创作者继续创作。</p>
+    <div class="flagline"><span>全站免费</span><span>资助不解锁付费内容</span><span>二十四节气公示</span><span>时间窗口退款</span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="principle">
+    <div class="pr"><div class="no">壹</div><h4>自愿而非买卖</h4><p>资助是纯粹的支持，不是购买。平台所有游戏内容保持免费，不会锁在任何资助档位之后。</p></div>
+    <div class="pr"><div class="no">贰</div><h4>节气透明公示</h4><p>每一份资金去向都以二十四节气为节点公示，在保护隐私前提下尽量公开，守住为爱发电的公信力。</p></div>
+    <div class="pr"><div class="no">叁</div><h4>创作者为本</h4><p>玩家与创作者缺一不可。平台服务社区，不凌驾于创作者之上，尊重每一位创作者的决定。</p></div>
+  </div>
+</div>
+
+<section class="container tier-sec">
+  <span class="eyebrow">资助档位</span>
+  <h2 class="serif" style="color:var(--paper);font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:.06em;margin:.3rem 0 .2rem">三档之选 · 量力而行</h2>
+  <p style="font-size:.9rem;color:var(--silver);opacity:.85;max-width:640px">所有档位均为自愿支持，权益以电子荣誉、素材与内测资格为主，绝不以资助解锁付费内容。</p>
+  <div class="tier-grid">
+    <div class="tier">
+      <div class="mark"><i class="t1">微</i>微光支持者</div>
+      <h3>微光</h3>
+      <div class="tag">点亮一角 · 全站免费</div>
+      <ul><li>平台电子纪念证书</li><li>官网鸣谢栏署名</li><li>专属九州分区徽章</li></ul>
+      <a class="btn btn-ghost" href="登录注册.html">成为微光支持者</a>
+    </div>
+    <div class="tier t-hot">
+      <div class="mark"><i class="t2">墨</i>墨龙赞助者</div>
+      <h3>墨龙</h3>
+      <div class="tag">伴墨龙同行 · 深度参与</div>
+      <ul><li>全部微光权益</li><li>国潮壁纸与素材包</li><li>幕后开发日志</li></ul>
+      <a class="btn btn-zhu" href="登录注册.html">成为墨龙赞助者</a>
+    </div>
+    <div class="tier">
+      <div class="mark"><i class="t3">阙</i>朱阙共建者</div>
+      <h3>朱阙</h3>
+      <div class="tag">共建者 · 见证平台成长</div>
+      <ul><li>全部墨龙权益</li><li>内测资格</li><li>鸣谢名单署名 · 周边优先购</li></ul>
+      <a class="btn btn-seal" href="登录注册.html">成为朱阙共建者</a>
+    </div>
+  </div>
+</section>
+
+<section class="container" style="margin-top:2.5rem">
+  <span class="eyebrow">资金公示</span>
+  <h2 class="serif" style="color:var(--paper);font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:.06em;margin:.3rem 0 .2rem">二十四节气 · 一笔一笔说清楚</h2>
+  <div class="pub">
+    <div class="pub-card"><h4>公示节点</h4><p>按二十四节气发布：立春、雨水、惊蛰……每一个节气，就是一次资金与进度汇报。</p></div>
+    <div class="pub-card"><h4>公示范围</h4><p>服务器与带宽、美术素材采购、赛事物料、周边打样等，在保护隐私前提下尽可能公开，绝不公示身份证与私人联系方式。</p></div>
+  </div>
+  <div class="rules">
+    <div class="rule"><b>退款</b><span>资助遵循自愿原则。持续资助支持随时取消后续扣款；单笔资助设有时间窗口，窗口期内满足条件可申请退款。</span></div>
+    <div class="rule"><b>时限</b><span>超出约定窗口、资金已实际投入项目开发后，不再退款。资金去向均在节气公示中可查，请资助前先阅读资助协议。</span></div>
+    <div class="rule"><b>风险</b><span>本项目为民间为爱发电生态，项目推进依赖团队与志愿者投入，不承诺具体交付节点，请理性资助。</span></div>
+  </div>
+</section>
+
+<section class="container cta-box">
+  <h3>你的支持，就是华夏游戏的一束光</h3>
+  <p>无论是一份鼓励、一笔资助，还是一份创意投稿，都是撑起国产创作者这片天的力量。</p>
+  <div class="cta-row">
+    <a class="btn btn-zhu" href="登录注册.html">登录后资助</a>
+    <a class="btn btn-ghost" href="作品库.html">先逛逛作品库</a>
+    <a class="btn btn-seal" href="华夏游戏官网.html">返回首页</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <div class="brand-name" style="font-size:1.15rem">华夏游戏<small style="display:block;font-family:'Noto Sans SC';font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem">用心做游戏</small></div>
+        <p class="ftext">华夏游戏为<b>民间创作者共建项目</b>，非注册商业企业。依靠爱好者自愿资助持续迭代，为国产创作者撑起一片天。</p>
+      </div>
+      <div><h5>平台生态</h5><ul><li><a href="华夏游戏官网.html">首页</a></li><li><a href="作品库.html">作品库</a></li><li><a href="工作室.html">工作室</a></li><li><a href="草台剧场.html">草台剧场</a></li><li><a href="承天学院.html">承天学院</a></li></ul></div>
+      <div><h5>功能入口</h5><ul><li><a href="开发者中心.html">开发者中心</a></li><li><a href="九州分区.html">九州分区</a></li><li><a href="赛事中心.html">创作赛事</a></li><li><a href="资助中心.html">资助中心</a></li><li><a href="平台下载.html">平台启动器下载</a></li><li><a href="登录注册.html">登录 / 注册</a></li></ul></div>
+      <div><h5>说明</h5><ul><li><a href="javascript:void(0)" data-toast>资助协议</a></li><li><a href="javascript:void(0)" data-toast>节气公示明细</a></li><li><a href="javascript:void(0)" data-toast>赛事合规声明</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>华夏游戏 · 用心做游戏 · 民间创作者共建</span><span>一期静态原型</span></div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+<script>
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+var toast=document.getElementById('toast'),timer;
+document.querySelectorAll('[data-toast]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();toast.textContent='该功能建设中，敬请期待';toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1800);});});
+</script>
+</body>
+</html>

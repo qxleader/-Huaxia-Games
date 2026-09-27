@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0b09">
+<title>赛事详情 · 华夏游戏</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%23a4281a'/><text x='32' y='46' font-size='40' text-anchor='middle' fill='%23f2ede2' font-family='serif' font-weight='900'>华</text></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{--ink:#0d0b09;--ink-2:#14110d;--paper:#f2ede2;--paper-2:#e7dfcc;--zhu:#a4281a;--zhu-hi:#c6452c;--zhu-deep:#6e1710;--silver:#cfc7b6;--gold:#9c7a3c;--line:rgba(196,69,44,.28);--pad:clamp(1.1rem,4vw,3.2rem)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--silver);font-family:"Noto Sans SC",system-ui,-apple-system,"Microsoft YaHei",sans-serif;line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .78 0 0 0 0 .7 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.35}
+.container{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 var(--pad)}a{color:inherit;text-decoration:none}section{position:relative;z-index:1}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,11,9,.84);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem}.brand-seal{width:42px;height:42px;border-radius:8px;flex:none;background:linear-gradient(150deg,var(--zhu),var(--zhu-deep));display:grid;place-items:center;color:var(--paper);box-shadow:0 0 0 1px rgba(196,69,44,.4)}.brand-seal span{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.1rem}
+.brand-name{font-family:"Noto Serif SC",serif;font-weight:900;font-size:1.3rem;color:var(--paper);letter-spacing:.12em}.brand-name small{display:block;font-family:"Noto Sans SC";font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem}
+.menu{display:flex;align-items:center;gap:1.2rem;list-style:none;font-size:.9rem}.menu a{color:var(--silver);position:relative;padding:.2rem 0;transition:color .2s}.menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--zhu-hi);transition:width .25s}.menu a:hover{color:var(--paper)}.menu a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:1px solid var(--zhu-hi);background:transparent;color:var(--paper);font-size:.9rem;padding:.5rem 1rem;border-radius:6px;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s;white-space:nowrap}.btn:hover{background:var(--zhu-hi);color:#fff;box-shadow:0 0 22px rgba(196,69,44,.4)}.btn-zhu{background:var(--zhu);border-color:var(--zhu-hi);color:#fff}.btn-ghost{border-color:var(--line);color:var(--silver)}.btn-ghost:hover{background:rgba(196,69,44,.08)}.btn-seal{background:var(--paper);color:var(--zhu-deep);border-color:var(--paper);font-family:"Noto Serif SC",serif;font-weight:700}
+.hamburger{display:none;background:none;border:none;color:var(--paper);font-size:1.5rem;cursor:pointer;padding:.2rem .4rem}
+.back{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--silver);opacity:.8;margin:1.4rem 0 1rem;transition:.2s}.back:hover{color:var(--zhu-hi)}
+/* 赛事选择 */
+.sel{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.6rem}
+.sel .s{border:1px solid var(--line);border-radius:10px;padding:.8rem .6rem;text-align:center;font-family:"Noto Serif SC",serif;color:var(--silver);cursor:pointer;transition:.2s;font-size:.86rem;line-height:1.5}.sel .s small{display:block;font-family:"Noto Sans SC";font-size:.66rem;color:var(--gold);margin-top:.15rem}.sel .s.on{border-color:var(--zhu-hi);color:var(--paper);background:rgba(164,40,26,.1)}
+/* 详情 */
+.race{display:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,rgba(20,17,13,.9),rgba(13,11,9,.97))}.race.on{display:block}
+.rhead{padding:1.8rem 1.8rem;border-bottom:1px solid var(--line);background:radial-gradient(600px 220px at 20% 0%,rgba(164,40,26,.3),transparent 60%)}
+.rhead .ey{font-size:.7rem;letter-spacing:.3em;color:var(--zhu-hi)}
+.rhead h1{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.8rem;letter-spacing:.05em;margin:.35rem 0 .3rem}
+.rhead p{font-size:.9rem;color:var(--silver);opacity:.85;line-height:1.85;max-width:720px}
+.rbody{padding:1.6rem 1.8rem}
+h3.rh{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.02rem;letter-spacing:.04em;margin:1.2rem 0 .7rem}
+h3.rh:first-child{margin-top:0}
+/* 信息卡 */
+.infos{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.inf{border:1px solid var(--line);border-radius:10px;padding:.8rem;background:rgba(13,11,9,.5)}.inf .k{font-size:.7rem;color:var(--gold);letter-spacing:.05em}.inf .v{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:.95rem;margin-top:.2rem}
+/* 赛程时间轴 */
+.sched{display:grid;grid-template-columns:6.5rem 2rem 1fr;border-top:1px solid var(--line)}
+.sched .n{padding:.75rem 0}.sched .t{color:var(--gold);font-family:"Noto Serif SC",serif;font-size:.78rem;font-weight:600;padding-right:.5rem}
+.sched .axis{position:relative;display:flex;justify-content:center}.sched .axis::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);background:linear-gradient(var(--zhu-hi),rgba(196,69,44,.1))}
+.sched .dot{width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--zhu-hi);z-index:1;margin-top:.85rem}
+.sched .c{padding:.55rem 0 .75rem 1rem;border-bottom:1px solid rgba(196,69,44,.12)}.sched .c b{font-family:"Noto Serif SC",serif;color:var(--paper);font-weight:600;font-size:.88rem}.sched .c p{font-size:.78rem;color:var(--silver);opacity:.78;margin-top:.15rem}
+/* 规则 */
+.rules{list-style:none;display:grid;gap:.5rem}.rules li{font-size:.84rem;color:var(--silver);opacity:.85;padding-left:1.1rem;position:relative;line-height:1.7}.rules li::before{content:"◆";position:absolute;left:0;color:var(--zhu-hi);font-size:.7rem;top:.35rem}
+/* 报名 */
+.apply{border:1px solid var(--line);border-radius:14px;margin-top:1.6rem;padding:1.5rem 1.6rem;background:rgba(13,11,9,.55)}
+.apply h3{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:1.05rem;letter-spacing:.04em;margin-bottom:1rem}
+.field{margin-bottom:.9rem}.field label{display:block;font-size:.8rem;color:var(--silver);opacity:.85;margin-bottom:.3rem}.field input,.field select,.field textarea{width:100%;background:rgba(13,11,9,.6);border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem;color:var(--paper);font-size:.9rem;font-family:inherit;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--zhu-hi)}.field textarea{resize:vertical;min-height:70px}
+.apply-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.agree{display:flex;gap:.5rem;align-items:flex-start;font-size:.78rem;color:var(--silver);opacity:.85;margin:.8rem 0}.agree input{margin-top:.3rem;accent-color:var(--zhu-hi)}
+footer{background:var(--ink-2);border-top:1px solid var(--line);padding:2.6rem 0 1.6rem;position:relative;z-index:1}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem}.foot h5{font-family:"Noto Serif SC",serif;color:var(--paper);font-size:.92rem;letter-spacing:.08em;margin-bottom:.8rem}.foot ul{list-style:none;display:grid;gap:.45rem}.foot ul a{font-size:.8rem;color:var(--silver);opacity:.82;transition:.2s}.foot ul a:hover{color:var(--zhu-hi)}.foot .ftext{font-size:.8rem;color:var(--silver);opacity:.78;line-height:1.8;margin-top:.6rem;max-width:340px}.foot .ftext b{color:var(--gold)}
+.foot-bottom{margin-top:2rem;border-top:1px solid var(--line);padding-top:1.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;color:var(--silver);opacity:.65}
+#toast{position:fixed;left:50%;bottom:2rem;transform:translateX(-50%);background:var(--paper);color:var(--zhu-deep);font-family:"Noto Serif SC",serif;font-size:.88rem;padding:.6rem 1.1rem;border-radius:8px;opacity:0;pointer-events:none;transition:.3s;z-index:100}#toast.show{opacity:1}
+@media(max-width:860px){.sel{grid-template-columns:1fr 1fr}.infos{grid-template-columns:1fr 1fr}.apply-grid{grid-template-columns:1fr}.menu{display:none;position:absolute;top:66px;left:0;right:0;background:var(--ink-2);flex-direction:column;align-items:flex-start;padding:1rem var(--pad);border-bottom:1px solid var(--line);gap:1rem}.menu.open{display:flex}.hamburger{display:block}.nav-actions .btn-hide-m{display:none}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.infos{grid-template-columns:1fr}.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="华夏游戏官网.html"><span class="brand-seal"><span>华</span></span><span class="brand-name">华夏游戏<small>用心做游戏</small></span></a>
+    <nav><ul class="menu" id="menu"><li><a href="华夏游戏官网.html">首页</a></li><li><a href="作品库.html">作品库</a></li><li><a href="工作室.html">工作室</a></li><li><a href="草台剧场.html">草台剧场</a></li><li><a href="赛事中心.html">赛事</a></li><li><a href="资助中心.html">资助</a></li><li><a href="关于我们.html">关于</a></li></ul></nav>
+    <div class="nav-actions"><a class="btn btn-ghost btn-hide-m" href="平台下载.html">平台下载</a><a class="btn btn-zhu" href="登录注册.html">登录 / 注册</a><button class="hamburger" id="burger" aria-label="菜单">☰</button></div>
+  </div>
+</header>
+
+<div class="container">
+  <a class="back" href="赛事中心.html">← 返回赛事中心</a>
+  <div class="sel" id="sel">
+    <div class="s on" data-r="九州创作大赛"><small>综合创作</small>九州创作大赛</div>
+    <div class="s" data-r="津门影像赛"><small>影像叙事</small>津门影像赛</div>
+    <div class="s" data-r="承天文创设计赛"><small>文创设计</small>承天文创设计赛</div>
+    <div class="s" data-r="实验企划挑战赛"><small>先锋实验</small>实验企划挑战赛</div>
+  </div>
+
+  <!-- 九州创作大赛 -->
+  <div class="race on" id="r-九州创作大赛">
+    <div class="rhead"><div class="ey">华夏游戏 · 民间创作赛事</div><h1>九州创作大赛</h1><p>面向全平台的综合创作大赛，游戏原型、原画、剧本、短片、动画分镜、配乐、文创设计均可投稿，九州分区联动举办。</p></div>
+    <div class="rbody">
+      <h3 class="rh">赛事信息</h3>
+      <div class="infos"><div class="inf"><div class="k">类型</div><div class="v">综合创作</div></div><div class="inf"><div class="k">分组</div><div class="v">新手组 / 进阶组</div></div><div class="inf"><div class="k">评审</div><div class="v">大众投票 + 评委</div></div><div class="inf"><div class="k">报名费</div><div class="v">免费</div></div></div>
+      <h3 class="rh">赛程安排</h3>
+      <div class="sched"><div class="n t">规划期</div><div class="axis"><span class="dot"></span></div><div class="c"><b>开放报名与征集</b><p>登录后在创作者后台提交作品。</p></div>
+      <div class="n t">评审期</div><div class="axis"><span class="dot"></span></div><div class="c"><b>大众投票 + 评委评审</b><p>双轨并行，评委按组别与分区分别评审。</p></div>
+      <div class="n t">公示期</div><div class="axis"><span class="dot"></span></div><div class="c"><b>结果公示</b><p>公布获奖名单，永久收录于赛事存档。</p></div>
+      <div class="n t">颁奖</div><div class="axis"><span class="dot"></span></div><div class="c"><b>颁奖礼（远期线下）</b><p>证书与荣誉仅作纪念，不具行政或职业资质效力。</p></div></div>
+      <h3 class="rh">评审与规则</h3>
+      <ul class="rules"><li>分新手组与进阶组，防止老手持续包揽奖项，照顾不同阶段创作者。</li><li>大众投票与评委评审混合，单一渠道不作最终定论。</li><li>作品版权归作者本人，平台仅获非商业展示与宣传权；二次剪辑须逐一征得作者同意。</li><li>不收取任何报名费用，证书仅作荣誉纪念。</li></ul>
+      <div class="apply">
+        <h3>我要报名</h3>
+        <div class="apply-grid">
+          <div class="field"><label>参赛昵称</label><input type="text" placeholder="请输入昵称"></div>
+          <div class="field"><label>所属九州分区</label><select><option>冀州 · 京津冀</option><option>兖州 · 山东</option><option>青州 · 东北</option><option>扬州 · 江南闽台</option><option>其他</option></select></div>
+          <div class="field"><label>参赛组别</label><select><option>新手组</option><option>进阶组</option></select></div>
+          <div class="field"><label>作品类型</label><select><option>游戏原型</option><option>原画</option><option>剧本</option><option>短片 / 视频</option><option>动画分镜</option><option>配乐</option><option>文创设计</option></select></div>
+        </div>
+        <div class="field"><label>作品简介</label><textarea placeholder="用一段话介绍你的作品……"></textarea></div>
+        <div class="agree"><input type="checkbox" checked><span>我已阅读并同意赛事规则：作品为本人原创，仅授予华夏游戏非商业展示与宣传权；不收取报名费，证书仅作荣誉纪念。</span></div>
+        <a class="btn btn-zhu" onclick="submit()">提交报名</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 津门影像赛 -->
+  <div class="race" id="r-津门影像赛">
+    <div class="rhead"><div class="ey">华夏游戏 · 影像叙事</div><h1>津门影像赛</h1><p>以天津风物为主题的影像创作赛事，与草台剧场联动，纪录片、短片、电影、VLOG 均可投稿。</p></div>
+    <div class="rbody">
+      <h3 class="rh">赛事信息</h3>
+      <div class="infos"><div class="inf"><div class="k">类型</div><div class="v">影像创作</div></div><div class="inf"><div class="k">分组</div><div class="v">新手组 / 进阶组</div></div><div class="inf"><div class="k">主场</div><div class="v">冀州 · 天津</div></div><div class="inf"><div class="k">报名费</div><div class="v">免费</div></div></div>
+      <h3 class="rh">赛程安排</h3>
+      <div class="sched"><div class="n t">征集</div><div class="axis"><span class="dot"></span></div><div class="c"><b>投稿</b><p>面向天津主题影像作品征集。</p></div>
+      <div class="n t">展映</div><div class="axis"><span class="dot"></span></div><div class="c"><b>线上展映</b><p>优秀作品在平台内嵌播放器展映。</p></div>
+      <div class="n t">评审</div><div class="axis"><span class="dot"></span></div><div class="c"><b>投票 + 评委</b><p>混合评审，表彰最佳影像叙事。</p></div></div>
+      <h3 class="rh">评审与规则</h3>
+      <ul class="rules"><li>题材围绕天津的风物、人文与故事展开。</li><li>投稿须为作者原创或拥有完整授权。</li><li>平台内嵌播放器与跳转展示均可，参考主流影音站做法。</li></ul>
+      <div class="apply"><h3>我要报名</h3>
+        <div class="apply-grid"><div class="field"><label>参赛昵称</label><input type="text" placeholder="请输入昵称"></div><div class="field"><label>作品类型</label><select><option>纪录片</option><option>短片 / 电影</option><option>VLOG</option></select></div></div>
+        <div class="agree"><input type="checkbox" checked><span>已阅读并同意赛事规则：作品为本人原创，仅授予非商业展示权。</span></div>
+        <a class="btn btn-zhu" onclick="submit()">提交报名</a></div>
+    </div>
+  </div>
+
+  <!-- 承天文创设计赛 -->
+  <div class="race" id="r-承天文创设计赛">
+    <div class="rhead"><div class="ey">华夏游戏 · 文创设计</div><h1>承天文创设计赛</h1><p>与承天学院、潮玩基地联动，以国潮与九州文化为题的文创设计赛事，手办、周边、纹样皆可投稿。</p></div>
+    <div class="rbody">
+      <h3 class="rh">赛事信息</h3>
+      <div class="infos"><div class="inf"><div class="k">类型</div><div class="v">文创设计</div></div><div class="inf"><div class="k">分组</div><div class="v">新手组 / 进阶组</div></div><div class="inf"><div class="k">联动</div><div class="v">承天学院 · 潮玩基地</div></div><div class="inf"><div class="k">报名费</div><div class="v">免费</div></div></div>
+      <h3 class="rh">评审与规则</h3>
+      <ul class="rules"><li>主题：国潮与九州文化，鼓励在地元素融合。</li><li>涉及角色 / 形象须为原创，不侵犯第三方权利。</li><li>版权归作者，平台仅获非商业展示权。</li></ul>
+      <div class="apply"><h3>我要报名</h3>
+        <div class="apply-grid"><div class="field"><label>参赛昵称</label><input type="text" placeholder="请输入昵称"></div><div class="field"><label>所属分区</label><select><option>冀州 · 京津冀</option><option>扬州 · 江南闽台</option><option>梁州 · 川渝云贵</option><option>其他</option></select></div></div>
+        <div class="agree"><input type="checkbox" checked><span>已阅读并同意赛事规则：作品为本人原创。</span></div>
+        <a class="btn btn-zhu" onclick="submit()">提交报名</a></div>
+    </div>
+  </div>
+
+  <!-- 实验企划挑战赛 -->
+  <div class="race" id="r-实验企划挑战赛">
+    <div class="rhead"><div class="ey">华夏游戏 · 先锋实验</div><h1>实验企划挑战赛</h1><p>与权欣工作室联动，面向先锋玩法、概念实验与脑洞企划的挑战赛，大胆设想未来华夏游戏的形态。</p></div>
+    <div class="rbody">
+      <h3 class="rh">赛事信息</h3>
+      <div class="infos"><div class="inf"><div class="k">类型</div><div class="v">概念 / 玩法实验</div></div><div class="inf"><div class="k">分组</div><div class="v">新手组 / 进阶组</div></div><div class="inf"><div class="k">主场</div><div class="v">大荒 · 实验</div></div><div class="inf"><div class="k">报名费</div><div class="v">免费</div></div></div>
+      <h3 class="rh">评审与规则</h3>
+      <ul class="rules"><li>鼓励概念原型、玩法脑洞、世界观企划等非成品方案。</li><li>投稿须为原创，版权归作者本人。</li><li>优秀企划可获平台资源位展示（非承诺回报）。</li></ul>
+      <div class="apply"><h3>我要报名</h3>
+        <div class="apply-grid"><div class="field"><label>参赛昵称</label><input type="text" placeholder="请输入昵称"></div><div class="field"><label>作品形态</label><select><option>概念原型</option><option>玩法脑洞</option><option>世界观企划</option></select></div></div>
+        <div class="agree"><input type="checkbox" checked><span>已阅读并同意赛事规则：作品为本人原创。</span></div>
+        <a class="btn btn-zhu" onclick="submit()">提交报名</a></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><div class="brand-name" style="font-size:1.15rem">华夏游戏<small style="display:block;font-family:'Noto Sans SC';font-weight:400;font-size:.6rem;color:var(--zhu-hi);letter-spacing:.35em;margin-top:.05rem">用心做游戏</small></div><p class="ftext">华夏游戏为<b>民间创作者共建项目</b>，非注册商业企业。依靠爱好者自愿资助持续迭代，为国产创作者撑起一片天。</p></div>
+      <div><h5>平台生态</h5><ul><li><a href="华夏游戏官网.html">首页</a></li><li><a href="作品库.html">作品库</a></li><li><a href="工作室.html">工作室</a></li><li><a href="草台剧场.html">草台剧场</a></li><li><a href="承天学院.html">承天学院</a></li></ul></div>
+      <div><h5>功能入口</h5><ul><li><a href="开发者中心.html">开发者中心</a></li><li><a href="九州分区.html">九州分区</a></li><li><a href="赛事中心.html">创作赛事</a></li><li><a href="资助中心.html">资助中心</a></li><li><a href="创作者后台.html">创作者后台</a></li><li><a href="平台下载.html">平台启动器下载</a></li></ul></div>
+      <div><h5>关于</h5><ul><li><a href="关于我们.html">关于我们</a></li><li><a href="帮助中心.html">帮助中心</a></li><li><a href="公共素材库.html">公共素材库</a></li><li><a href="讨论区.html">九州讨论区</a></li><li><a href="资金公示.html">资金公示</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>华夏游戏 · 用心做游戏 · 民间创作者共建</span><span>一期静态原型</span></div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+<script>
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+var sels=document.querySelectorAll('#sel .s'),races=document.querySelectorAll('.race');
+sels.forEach(function(s){s.addEventListener('click',function(){var r=s.getAttribute('data-r');races.forEach(function(x){x.classList.toggle('on',x.id==='r-'+r);});sels.forEach(function(y){y.classList.toggle('on',y===s);});});});
+var toast=document.getElementById('toast'),timer;
+function submit(){toast.textContent='报名已提交（演示）';toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1800);}
+document.querySelectorAll('[data-toast]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();toast.textContent='建设中，敬请期待';toast.classList.add('show');clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show');},1800);});});
+</script>
+</body>
+</html>
